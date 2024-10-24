@@ -1,6 +1,5 @@
-import os
 from flask import Flask, request, render_template
-from queue_calculator import mm1_queue
+import math
 
 app = Flask(__name__)
 
@@ -10,11 +9,26 @@ def home():
 
 @app.route('/calculate', methods=['POST'])
 def calculate():
-    lmbda = float(request.form['arrival_rate'])
-    mu = float(request.form['service_rate'])
-    results = mm1_queue(lmbda, mu)
-    return render_template('results.html', results=results)
+    arrival_rate = float(request.form['arrival_rate'])
+    service_rate = float(request.form['service_rate'])
+
+    if service_rate == 0:
+        error_message = "Service rate cannot be zero. Please enter a valid value."
+        return render_template('index.html', error=error_message)
+
+    utilization = arrival_rate / service_rate
+    if utilization >= 1:
+        error_message = "Utilization rate must be less than 1. Please enter valid values."
+        return render_template('index.html', error=error_message)
+
+    avg_num_customers = utilization / (1 - utilization)
+    avg_wait_time = avg_num_customers / arrival_rate
+    prob_n_customers = lambda n: (1 - utilization) * (utilization ** n)
+    
+    n = int(request.form['n'])
+    probability = prob_n_customers(n)
+
+    return render_template('result.html', utilization=utilization, avg_num_customers=avg_num_customers, avg_wait_time=avg_wait_time, probability=probability)
 
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port, debug=True)
+    app.run(debug=True)
