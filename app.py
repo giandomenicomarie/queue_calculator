@@ -1,3 +1,4 @@
+import os
 from flask import Flask, request, render_template
 from queue_calculator import mm1_queue
 
@@ -15,4 +16,5 @@ def calculate():
     return render_template('results.html', results=results)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=True)
