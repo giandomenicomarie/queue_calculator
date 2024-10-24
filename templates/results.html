@@ -2,15 +2,61 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Queueing Calculator Results</title>
+    <title>Marie's Queuing Calculator Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+            color: #555;
+        }
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #4CAF50;
+        }
+        a:hover {
+            color: #45a049;
+        }
+    </style>
 </head>
 <body>
-    <h1>Results</h1>
-    <ul>
-        {% for key, value in results.items() %}
-            <li>{{ key }}: {{ value }}</li>
-        {% endfor %}
-    </ul>
-    <a href="/">Back</a>
+    <div class="container">
+        <h1>Marie's Queuing Calculator Results</h1>
+        <ul>
+            {% for key, value in results.items() %}
+                <li>{{ key }}: {{ value }}</li>
+            {% endfor %}
+        </ul>
+        <a href="/">Back</a>
+    </div>
 </body>
 </html>
