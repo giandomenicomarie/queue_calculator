@@ -1,62 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Marie's Queuing Calculator Results</title>
+    <title>Queueing Results</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-        }
-        .container {
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 400px;
-            width: 100%;
-            box-sizing: border-box;
+            background-color: #ffe6f0;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            color: #ff69b4;
         }
         h1 {
-            text-align: center;
-            color: #333;
+            color: #ff1493;
         }
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-        li {
-            margin: 10px 0;
-            color: #555;
+        .result-box {
+            background-color: #fff0f5;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(255, 105, 180, 0.3);
         }
         a {
-            display: block;
-            text-align: center;
-            margin-top: 20px;
+            color: #ff69b4;
             text-decoration: none;
-            color: #4CAF50;
+            font-weight: bold;
         }
         a:hover {
-            color: #45a049;
+            color: #ff1493;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Marie's Queuing Calculator Results</h1>
-        <ul>
-            {% for key, value in results.items() %}
-                <li>{{ key }}: {{ value }}</li>
-            {% endfor %}
-        </ul>
-        <a href="/">Back</a>
+    <h1>Queueing Results</h1>
+    <div class="result-box">
+        <p>Utilization (ρ): {{ utilization }}</p>
+        <p>Average Number of Customers (L): {{ avg_num_customers }}</p>
+        <p>Average Wait Time (W): {{ avg_wait_time }} time units</p>
+        <p>Probability of n Customers in System: {{ probability }}</p>
     </div>
+    <a href="/">Back</a>
 </body>
 </html>
