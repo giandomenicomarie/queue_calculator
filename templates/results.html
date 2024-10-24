@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Queueing Calculator Results</title>
+</head>
+<body>
+    <h1>Results</h1>
+    <ul>
+        {% for key, value in results.items() %}
+            <li>{{ key }}: {{ value }}</li>
+        {% endfor %}
+    </ul>
+    <a href="/">Back</a>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Queueing Calculator</title>
+</head>
+<body>
+    <h1>Queueing Calculator</h1>
+    <form action="/calculate" method="POST">
+        <label for="arrival_rate">Arrival Rate (λ):</label>
+        <input type="text" id="arrival_rate" name="arrival_rate" required>
+        <br><br>
+        <label for="service_rate">Service Rate (μ):</label>
+        <input type="text" id="service_rate" name="service_rate" required>
+        <br><br>
+        <input type="submit" value="Calculate">
+    </form>
+</body>
+</html>
